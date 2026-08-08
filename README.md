@@ -68,8 +68,6 @@ without a description cost no extra height.
   `echo x | herdr plugin action invoke …` is not a script path — herdr 0.8.0
   does not forward piped stdin to actions, so it falls back to the popup.
 
-- **Limits** — keyed by workspace ID; herdr caps values at 80 characters.
-
 ## How it works
 
 - **Action** — saves directly when stdin is piped (a channel herdr reserves
