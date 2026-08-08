@@ -45,6 +45,6 @@ rl.on('line', (line) => {
 for (const sig of ['SIGTERM', 'SIGINT', 'SIGHUP']) process.on(sig, () => quit(0));
 
 process.stdout.write(ALT_SCREEN_ON + CURSOR_HIDE);
-rl.setPrompt('description: ');
+rl.setPrompt('');
 rl.prompt();
 rl.write(current);
