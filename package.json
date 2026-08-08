@@ -1,0 +1,14 @@
+{
+  "name": "herdr-workspace-description",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Per-workspace descriptions on the herdr sidebar",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0"
+  },
+  "scripts": {
+    "test": "bun test"
+  }
+}
