@@ -27,6 +27,18 @@ test('corrupt state file loads as empty', () => {
   expect(loadDescriptions(dir)).toEqual({});
 });
 
+test('valid-but-wrong JSON shapes load as empty', () => {
+  for (const bad of ['null', '[]', '"str"', '42']) {
+    writeFileSync(join(dir, 'descriptions.json'), bad);
+    expect(loadDescriptions(dir)).toEqual({});
+  }
+});
+
+test('non-string values are dropped', () => {
+  writeFileSync(join(dir, 'descriptions.json'), '{"w1": "ok", "w2": 42, "w3": null}');
+  expect(loadDescriptions(dir)).toEqual({ w1: 'ok' });
+});
+
 // Empty-string handling: setting an empty description clears the token and
 // drops the state entry. A stub herdr records what would be reported.
 function withStubHerdr(fn: () => void): string {
@@ -40,7 +52,8 @@ function withStubHerdr(fn: () => void): string {
     try {
       fn();
     } finally {
-      process.env.HERDR_BIN_PATH = oldBin;
+      if (oldBin === undefined) delete process.env.HERDR_BIN_PATH;
+      else process.env.HERDR_BIN_PATH = oldBin;
     }
     return readFileSync(log, 'utf8');
   } finally {

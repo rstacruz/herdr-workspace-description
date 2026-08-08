@@ -6,7 +6,13 @@ const FILE = 'descriptions.json';
 
 export function loadDescriptions(dir: string): Record<string, string> {
   try {
-    return JSON.parse(readFileSync(join(dir, FILE), 'utf8'));
+    const parsed = JSON.parse(readFileSync(join(dir, FILE), 'utf8'));
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) return {};
+    const map: Record<string, string> = {};
+    for (const [key, value] of Object.entries(parsed)) {
+      if (typeof value === 'string') map[key] = value;
+    }
+    return map;
   } catch {
     return {};
   }
