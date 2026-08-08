@@ -1,0 +1,28 @@
+id = "rsc.workspace-description"
+name = "Workspace Description"
+version = "0.1.0"
+min_herdr_version = "0.7.4"
+description = "Per-workspace descriptions on the herdr sidebar"
+platforms = ["linux", "macos"]
+
+# Token metadata is not restored across restarts; re-report stored
+# descriptions after a server start or live handoff.
+[[startup]]
+command = ["bun", "bin/startup.ts"]
+
+[[actions]]
+id = "edit"
+title = "Edit workspace description"
+description = "Set or clear the focused workspace's sidebar description"
+contexts = ["workspace", "tab", "pane"]
+command = ["bun", "bin/edit.ts"]
+
+# placement = "popup" lives here only — the CLI's accepted --placement values
+# lag the manifest's and reject popup, so the action never passes it.
+[[panes]]
+id = "edit"
+title = "Workspace description"
+placement = "popup"
+width = "80%"
+height = 8
+command = ["bun", "bin/edit-pane.ts"]
