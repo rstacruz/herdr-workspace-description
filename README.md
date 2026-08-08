@@ -68,17 +68,6 @@ without a description cost no extra height.
   `echo x | herdr plugin action invoke …` is not a script path — herdr 0.8.0
   does not forward piped stdin to actions, so it falls back to the popup.
 
-## How it works
-
-- **Action** — saves directly when stdin is piped (a channel herdr reserves
-  but does not forward yet); opens the popup otherwise.
-- **Popup editor** — `node:readline` line editor on an alternate screen.
-- **State** — `descriptions.json` under `HERDR_PLUGIN_STATE_DIR`.
-- **Token** — `workspace report-metadata` writes `description` (no TTL; it
-  lives until the next restart), rendered as `$description`.
-- **Restart** — a `[[startup]]` hook re-reports stored descriptions; token
-  metadata is not restored across restarts.
-
 ## Develop
 
 ```bash
