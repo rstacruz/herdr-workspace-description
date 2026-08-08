@@ -40,7 +40,7 @@ rows = [
 [[keys.command]]
 key = "prefix+shift+e"
 type = "plugin_action"
-command = "rsc.workspace-description.edit"
+command = "rstacruz.workspace-description.edit"
 description = "edit workspace description"
 ```
 
@@ -61,7 +61,7 @@ without a description cost no extra height.
   restart; the popup is the only path that persists):
 
   ```bash
-  herdr workspace report-metadata <id> --source rsc.workspace-description \
+  herdr workspace report-metadata <id> --source rstacruz.workspace-description \
     --token description="fix billing edge case"
   ```
 
@@ -80,7 +80,7 @@ No dependencies, so no install step.
 ## Troubleshooting
 
 ```bash
-herdr plugin action list --plugin rsc.workspace-description
+herdr plugin action list --plugin rstacruz.workspace-description
 herdr workspace list | grep -o '"tokens":{[^}]*}'
 ```
 
@@ -88,7 +88,7 @@ herdr workspace list | grep -o '"tokens":{[^}]*}'
   required; check `herdr config check`.
 - **Keybinding does nothing** — `herdr config check` validates TOML but not
   action ids. Compare the `command` against
-  `herdr plugin action list --plugin rsc.workspace-description`.
+  `herdr plugin action list --plugin rstacruz.workspace-description`.
 - **`could not open the editor: … ui_busy …`** — a herdr modal (settings,
   copy mode) is open; close it and retry.
 

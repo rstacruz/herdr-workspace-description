@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import { loadDescriptions, saveDescriptions } from './state.ts';
 
-export const SOURCE = 'rsc.workspace-description';
+export const SOURCE = 'rstacruz.workspace-description';
 // No --ttl-ms on purpose: herdr caps it at 24h, and omitting it means the
 // token lives until the next restart — when the startup hook re-reports it.
 export function herdrBin(env = process.env) {
