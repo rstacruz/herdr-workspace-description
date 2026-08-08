@@ -3,12 +3,12 @@
 Puts a one-line description under each space in the herdr sidebar.
 
 ```
-▼ .dotfiles
+▼ acme-web
     main
-    dotfile tweaks
-● rlab
-    feat/herdr-plugin
-    rlab issue triage
+    fix billing edge case
+● acme-api
+    feat/rate-limiting
+    rate limiting pass
 ```
 
 The sidebar already shows what agents are doing and which branch each space is
